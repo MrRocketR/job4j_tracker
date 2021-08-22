@@ -1,9 +1,9 @@
 package ru.job4j.oop;
 
 public class Error {
-    boolean active;
-    int status;
-    String message;
+    private boolean active;
+    private int status;
+    private String message;
     public Error() {
 
     }
@@ -24,6 +24,9 @@ public class Error {
         error1.printInfo();
         Error error2 = new Error(false,404,"Not found");
         error2.printInfo();
+        Error error3 = new Error(false,505,"HTTP Version not supported");
+        Error error4 = new Error(true,1,"Not found");
+
 
     }
 }
