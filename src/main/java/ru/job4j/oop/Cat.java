@@ -3,6 +3,7 @@ package ru.job4j.oop;
 public class Cat {
     private String food;
     private String name;
+
     public String sound() {
         String voice = "may-may";
         return voice;
@@ -16,6 +17,7 @@ public class Cat {
     public void eat(String meat) {
         this.food = meat;
     }
+
     public void giveNick(String nick) {
         this.name = nick;
     }
