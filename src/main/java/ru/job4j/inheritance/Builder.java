@@ -1,8 +1,13 @@
 package ru.job4j.inheritance;
 
 public class Builder extends Engineer {
-    String material;
-    int materialCount;
+    private String material;
+    private int materialCount;
+
+    public Builder(String material, int materialCount) {
+        this.material = material;
+        this.materialCount = materialCount;
+    }
 
     @Override
     public String getName() {

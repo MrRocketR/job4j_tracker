@@ -1,7 +1,10 @@
 package ru.job4j.inheritance;
 
 public class Dentist extends Doctor {
-    public void checkTeeth() {
+    private int price;
+
+    public Dentist(int price) {
+        this.price = price;
     }
 
     @Override
