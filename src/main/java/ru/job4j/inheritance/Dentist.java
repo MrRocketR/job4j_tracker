@@ -3,13 +3,9 @@ package ru.job4j.inheritance;
 public class Dentist extends Doctor {
     private int price;
 
-    public Dentist(int price) {
+    public Dentist(String name, String surname, String education, int birthday, String patient, int experience, int price) {
+        super(name, surname, education, birthday, patient, experience);
         this.price = price;
-    }
-
-    @Override
-    public String getName() {
-        return super.getName();
     }
 
     public void dentalAbuse(Patient p) {
