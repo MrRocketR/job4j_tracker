@@ -14,15 +14,16 @@ public class Shop {
             }
         }
     }
-        public static int indexOfNull (Product[]products){
-            int out = -1;
-            for (int index = 0; index < products.length; index++) {
-                Product nullFinder = products[index];
-                if (nullFinder == null) {
-                    out = index;
-                    break;
-                }
+
+    public static int indexOfNull(Product[] products) {
+        int out = -1;
+        for (int index = 0; index < products.length; index++) {
+            Product nullFinder = products[index];
+            if (nullFinder == null) {
+                out = index;
+                break;
             }
-            return out;
         }
+        return out;
+    }
 }
