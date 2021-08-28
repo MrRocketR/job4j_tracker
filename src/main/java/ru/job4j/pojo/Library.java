@@ -28,10 +28,10 @@ public class Library {
         System.out.println("_____________________");
         for (int index = 0; index < bookArray.length; index++) {
             Book out = bookArray[index];
-            if (out.getName().equals("Clean Code")) {
-                System.out.println(out.getName() + " " + out.getPages());
-                break;
+            if ("Clean Code".equals(out.getName())) {
+                    System.out.println(out.getName() + " " + out.getPages());
+                    break;
+                }
             }
         }
     }
-}
