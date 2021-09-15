@@ -37,8 +37,8 @@ public class Product {
         }
         Product product = (Product) o;
         return count == product.count
-                &&
-                name != null && name.equals(product.name);
+                && name != null
+                && name.equals(product.name);
     }
 
     @Override
