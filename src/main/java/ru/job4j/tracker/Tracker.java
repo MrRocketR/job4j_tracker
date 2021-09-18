@@ -65,19 +65,19 @@ public class Tracker {
             items[index].setId(item.getId());
             output = true;
         }
-        return false;
+        return output;
     }
 
     public boolean delete(int id) {
+        boolean output = false;
         int index = indexOf(id);
         if (index  > -1) {
             System.arraycopy(items, index + 1, items, index, size - index - 1);
             items[size - 1] = null;
             size--;
-            return true;
-        } else {
-            return false;
+            output = true;
         }
+        return output;
 
     }
 }
