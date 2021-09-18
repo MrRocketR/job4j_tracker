@@ -40,29 +40,38 @@ public class StartUI {
                 } else {
                     System.out.println("Ошибка замены заявки.");
                 }
-                } else if (select == 6) {
-                run = false;
-                    }
+            } else if (select == 3) {
+                System.out.println("=== Delete item ====");
+                System.out.print("Enter id: ");
+                int id = Integer.parseInt(scanner.nextLine());
+                if (tracker.delete(id)) {
+                    System.out.println("Заявка удалена успешно.");
+                } else {
+                    System.out.println("Ошибка удаления заявки.");
                 }
+            } else if (select == 6) {
+                run = false;
             }
-
-        private void showMenu() {
-            String[] menu = {
-                    "Add new Item", "Show all items", "Edit item",
-                    "Delete item", "Find item by id", "Find items by name",
-                    "Exit Program"
-            };
-            System.out.println("Menu:");
-            for (int i = 0; i < menu.length; i++) {
-                System.out.println(i + ". " + menu[i]);
-            }
-        }
-
-        public static void main(String[]args) {
-            Scanner scanner = new Scanner(System.in);
-            Tracker tracker = new Tracker();
-            new StartUI().init(scanner, tracker);
         }
     }
+
+    private void showMenu() {
+        String[] menu = {
+                "Add new Item", "Show all items", "Edit item",
+                "Delete item", "Find item by id", "Find items by name",
+                "Exit Program"
+        };
+        System.out.println("Menu:");
+        for (int i = 0; i < menu.length; i++) {
+            System.out.println(i + ". " + menu[i]);
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Tracker tracker = new Tracker();
+        new StartUI().init(scanner, tracker);
+    }
+}
 
 
