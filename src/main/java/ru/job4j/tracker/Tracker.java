@@ -30,22 +30,20 @@ public class Tracker {
                 size++;
             }
         }
-        newArray = Arrays.copyOf(newArray, size);
-        return newArray;
+        return Arrays.copyOf(items, size);
         }
 
     public Item[] findByName(String key) {
         Item[] newArray = new Item[items.length];
-        int size = 0;
-        for (int index = 0; index < newArray.length; index++) {
+        int count = 0;
+        for (int index = 0; index < size; index++) {
             Item temp = items[index];
-            if (temp != null && key.equals(temp.getName())) {
-                newArray[size] = temp;
-                size++;
+            if (key.equals(temp.getName())) {
+                newArray[count] = temp;
+                count++;
             }
         }
-        newArray = Arrays.copyOf(newArray, size);
-        return newArray;
+        return Arrays.copyOf(items, count);
     }
 
     private int indexOf(int id) {
