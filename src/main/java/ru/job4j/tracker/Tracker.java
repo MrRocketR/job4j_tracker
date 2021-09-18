@@ -34,12 +34,12 @@ public class Tracker {
         }
 
     public Item[] findByName(String key) {
-        Item[] newArray = new Item[items.length];
+        Item[] result = new Item[items.length];
         int count = 0;
         for (int index = 0; index < size; index++) {
             Item temp = items[index];
             if (key.equals(temp.getName())) {
-                newArray[count] = temp;
+                result[count] = temp;
                 count++;
             }
         }
@@ -58,13 +58,14 @@ public class Tracker {
     }
 
     public boolean replace(int id, Item item) {
+        boolean output = false;
         int index = indexOf(id);
         if (index > -1) {
             items[index].setName(item.getName());
-            return true;
-        } else {
-            return false;
+            items[index].setId(item.getId());
+            output = true;
         }
+        return false;
     }
 
     public boolean delete(int id) {
