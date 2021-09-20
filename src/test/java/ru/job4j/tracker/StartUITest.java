@@ -3,6 +3,7 @@ package ru.job4j.tracker;
 import org.hamcrest.core.IsNull;
 import org.junit.Test;
 import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.*;
 
 public class StartUITest {
@@ -34,25 +35,14 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = new Item("new item");
         tracker.add(item);
-        String[] answers = {"3",String.valueOf(item.getId())};
+        String[] answers = {String.valueOf(item.getId()),String.valueOf(item.getId())};
         Input input = new StubInput(answers);
         StartUI.deleteItem(input, tracker);
-        //Input input2 = new StubInput(answers);
-        //StartUI.deleteItem(input, tracker);
-        //StartUI.showItem(input, tracker);
-        //Item deleted = tracker.findById(1);
-        //assertThat(deleted.getId(), is(IsNull.nullValue()));
+        Item deleted = tracker.findById(item.getId());
+        //assertThat(deleted.getId(), is(nullValue()));
 
     }
-    /*
-    1. Создаем объект tracker.
-    2. Создаем объект item.
-    3. Добавляем item в tracker. После этой операции у нас есть id.
-    4. Достаем item.id и создаем массив с ответами пользователя.
-    5. Вызываем тестируемый метод replaceItem. Это действие изменит состояние объекта tracker.
-    6. Ищем по item.id замененный item в объекте tracker.
-    7. Сравниваем имя найденной заявки с ожидаемой.
-     */
+
 
 
 }
