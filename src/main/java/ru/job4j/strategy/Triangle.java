@@ -11,6 +11,6 @@ public class Triangle implements Shape {
     }
 
     public static void main(String[] args) {
-        System.out.println(new Triangle().draw());
+
     }
 }
