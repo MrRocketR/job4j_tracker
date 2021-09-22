@@ -10,7 +10,4 @@ public class Triangle implements Shape {
                 + "/_____\\" + ln;
     }
 
-    public static void main(String[] args) {
-
-    }
 }
