@@ -12,7 +12,7 @@ public class StartUITest {
     public void whenExit() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"0"}
+                new String[]{"0"}
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
@@ -24,8 +24,9 @@ public class StartUITest {
                         "0. Exit" + System.lineSeparator()
         ));
     }
-
-    @Test
+}
+/*
+ /*  @Test
     public void whenShowAction() {
         Output out = new StubOutput();
         Input in = new StubInput(
@@ -36,13 +37,12 @@ public class StartUITest {
                 new FindAllAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
-
-    /*   *//* assertThat(out.toString(), is(
+*/
+/*   *//* assertThat(out.toString(), is(
                 "Menu." + System.lineSeparator() +
                         "0.Show all items Хранилище еще не содержит заявок" + System.lineSeparator()
         )*//*
         )*//**//*;*/
-    }
 /*
     @Test
     public void whenFindByNameAction() {
@@ -126,7 +126,7 @@ public class StartUITest {
         new StartUI().init(in, tracker, actions);
         assertThat(tracker.findById(item.getId()), is(nullValue()));
     }*/
-}
+
 /*    @Test
     public void whenReplaceItem() {
         Tracker tracker = new Tracker();
@@ -151,7 +151,22 @@ public class StartUITest {
         Item deleted = tracker.findById(item.getId());
         assertNull(deleted);
        // assertThat(deleted, is(IsNull.nullValue())); <- другой вариант
-        //assertThat(deleted.getId(), is(nullValue())); <- нельзя вызывать getId*/
+        //assertThat(deleted.getId(), is(nullValue())); <- нельзя вызывать getId */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
