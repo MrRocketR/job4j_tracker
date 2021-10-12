@@ -9,6 +9,9 @@ public class Tracker {
     private int size = 0;
 
     public Item add(Item item) {
+        if (items.size() == 0)  {
+            items.add(new Item(0, "zero"));
+        }
         item.setId(ids++);
         items.add(item);
         return item;
