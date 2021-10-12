@@ -10,7 +10,7 @@ public class UserStore {
                 break;
             }
         }
-        if(returnUser == null)  {
+        if (returnUser == null)  {
             throw new UserNotFoundException("User not found!");
         }
         return returnUser;
@@ -18,7 +18,7 @@ public class UserStore {
 
     public static boolean validate(User user) throws UserInvalidException {
         String l = new String(user.getUsername());
-        if (!user.isValid()||l.length() <3)  {
+        if (!user.isValid() || l.length() < 3)  {
             throw new UserInvalidException("User is Invalid");
         }
         return true;

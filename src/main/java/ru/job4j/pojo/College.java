@@ -6,6 +6,7 @@ public class College {
         ivan.setFirstName("Ivan");
         ivan.setLastName("Ivanov");
         ivan.setGroup(182);
-        System.out.println(ivan.getFirstName() + " " + ivan.getLastName() + " from " + ivan.getGroup());
+        System.out.println(ivan.getFirstName() + " " + ivan.getLastName()
+                + " from " + ivan.getGroup());
     }
 }

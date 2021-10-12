@@ -7,7 +7,8 @@ public class Diagnosis {
     private String patientStatus;
     private boolean isHealed;
 
-    public Diagnosis(int years, String firtSymptome, String secondSymptome, String patientStatus, boolean isHealed) {
+    public Diagnosis(int years, String firtSymptome, String secondSymptome,
+                     String patientStatus, boolean isHealed) {
         this.years = years;
         this.firtSymptome = firtSymptome;
         this.secondSymptome = secondSymptome;

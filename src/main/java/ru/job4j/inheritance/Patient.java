@@ -8,7 +8,8 @@ public class Patient {
     private boolean isDead;
     private int teeth;
 
-    public Patient(boolean leftHand, boolean rightHand, boolean leftLeg, boolean rightLeg, boolean isDead, int teeth) {
+    public Patient(boolean leftHand, boolean rightHand, boolean leftLeg,
+                   boolean rightLeg, boolean isDead, int teeth) {
         this.leftHand = leftHand;
         this.rightHand = rightHand;
         this.leftLeg = leftLeg;

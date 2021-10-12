@@ -7,5 +7,4 @@ public interface Transport {
 
     int fuelUp(int gasoline);
 
-
 }
