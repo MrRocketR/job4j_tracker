@@ -30,7 +30,7 @@ public class Tracker {
             }
         }
         return newArray;
-        }
+    }
 
     public ArrayList<Item>  findByName(String key) {
         ArrayList<Item> result = new ArrayList<Item>();
@@ -45,10 +45,10 @@ public class Tracker {
     private int indexOf(int id) {
         int rsl = -1;
         for (Item temp : items) {
-                if (temp.getId() == id) {
-                    rsl = id;
-                    break;
-                }
+            if (temp.getId() == id) {
+                rsl = id;
+                break;
+            }
         }
         return rsl;
     }
