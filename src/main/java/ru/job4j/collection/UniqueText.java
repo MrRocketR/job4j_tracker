@@ -14,6 +14,7 @@ public class UniqueText {
         for (String checkWords: text) {
             if (!check.contains(checkWords)) {
                 rsl = false;
+                break;
             }
         }
 
