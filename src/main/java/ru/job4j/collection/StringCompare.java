@@ -16,25 +16,7 @@ public class StringCompare implements Comparator<String> {
         }
         return rsl;
     }
-
-    public static void main(String[] args) {
-        String a = "invanov";
-        String b = "ivanova";
-        char l =  a.charAt(7);
-        char r =  a.charAt(7);
-        int test = Character.compare(l, r);
-        System.out.println(test);
-
-    }
 }
 
-/*
-
-String.charAt(int index)
-
-Integer.compare(int left, int right),
-
-Character.compare(char left, char right);
 
 
- */
