@@ -18,3 +18,12 @@ notifications:
       - kuptsovns@gmail.com
     on_success: never # default: change
     on_failure: always # default: always
+
+  env:
+
+    global:
+
+      - CODECOV_TOKEN="bc53a030-fe85-4400-a9ee-6fb0cf816f9e"
+
+
+
