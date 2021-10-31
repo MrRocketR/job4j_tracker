@@ -18,9 +18,9 @@ public class FunctionalInterfaces {
         map.put(6, "six");
         map.put(7, "seven");
 
-        BiPredicate<Integer, String> biPred = (k, s) -> (k % 2 == 0 || map.get(k).length() == 4);
+        Predicate<Integer> pred = (k) -> (k % 2 == 0 || map.get(k).length() == 4);
         for (Integer i : map.keySet()) {
-            if (biPred.test(i, map.get(i))) {
+            if (pred.test(i)) {
                 System.out.println("key: " + i + " value: " + map.get(i));
             }
         }
@@ -30,8 +30,8 @@ public class FunctionalInterfaces {
         Consumer<String> con = (s) -> System.out.println(s);
         Function<String, String> func = (s) -> s.toUpperCase();
         for (String s : strings) {
-
-            System.out.println(s);
+            s = func.apply(s);
+            con.accept(s);
         }
     }
 }
