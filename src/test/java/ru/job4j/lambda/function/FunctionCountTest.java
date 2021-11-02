@@ -17,8 +17,8 @@ public class  FunctionCountTest {
     }
     @Test
     public void whenSquareFunctionThenSquareResults(){
-        List<Double> result = FunctionCount.diapason(1, 4, x -> 1 * Math.sqrt(x));
-        List<Double> expected = Arrays.asList(1.0, 1.4142135623730951, 1.7320508075688772);
+        List<Double> result = FunctionCount.diapason(1, 4, x -> 1 * Math.pow(x, 2));
+        List<Double> expected = Arrays.asList(1.0, 4.0, 9.0);
         assertThat(result, is(expected));
     }
     @Test
