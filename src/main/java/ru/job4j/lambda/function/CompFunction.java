@@ -6,7 +6,7 @@ import java.util.Comparator;
 
 public class CompFunction {
 
-    Comparator<String> cmpText = (left, right) -> left.compareTo(right);
-    Comparator<String> cmpDescSize = (left, right) -> left.length() - right.length();
+    Comparator<String> cmpText = String::compareTo;
+    Comparator<String> cmpDescSize = (left, right) -> Integer.compare(left.length(), right.length());
 
 }
