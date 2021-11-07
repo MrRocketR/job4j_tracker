@@ -9,7 +9,6 @@ public class School {
 
     public List<Student> collect(List<Student> students, Predicate<Student> predict) {
         List<Student> out = new ArrayList<>();
-        out = students.stream().filter(predict).collect(Collectors.toList());
-        return out;
+        return students.stream().filter(predict).collect(Collectors.toList());
     }
 }
