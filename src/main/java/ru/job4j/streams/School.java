@@ -16,7 +16,7 @@ public class School {
     public static Map<String, Student> listToMap(List<Student> students) {
         return students.stream()
                 .collect(Collectors
-                        .toMap(Student::getSurname, Function.identity(),
+                        .toMap(Student::getSurname, s -> s,
                                 (existing, replacement) -> existing));
     }
 }
