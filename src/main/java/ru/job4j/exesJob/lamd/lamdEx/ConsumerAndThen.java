@@ -1,4 +1,4 @@
-package ru.job4j.exesJob.lamdEx;
+package ru.job4j.exesJob.lamd.lamdEx;
 
 import java.util.function.Consumer;
 

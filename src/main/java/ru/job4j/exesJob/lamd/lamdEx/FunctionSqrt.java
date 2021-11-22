@@ -1,19 +1,15 @@
-package ru.job4j.exesJob.lamdEx;
+package ru.job4j.exesJob.lamd.lamdEx;
 
 import java.util.function.Function;
 
-public class FunctionPow {
+public class FunctionSqrt {
 
     public static double calculate(double x) {
-        return calculate(a -> Math.pow(a, 2), x);
+        return calculate(a -> Math.sqrt(a), x);
     }
 
     public static double calculate(Function<Double, Double> y, double x) {
         return y.apply(x);
-    }
-
-    public static void main(String[] args) {
-        System.out.println(calculate(2));
     }
 
 }
