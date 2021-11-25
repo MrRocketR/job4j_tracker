@@ -1,4 +1,4 @@
-package ru.job4j.exesJob.lamd.streamEx.lamdEx;
+package ru.job4j.exesJob.lamd.lamdEx;
 
 import org.junit.Assert;
 import org.junit.Test;
