@@ -14,13 +14,15 @@ public class OptionalOrlElse {
     }
 
     public static void main(String[] args) {
-        Integer value = -1;
-        Optional<Integer> n = Optional.of(-1);
-        Supplier<Integer> s = () -> (Integer) (int) (1 * 2 * Math.random());
-        Integer result =  Optional.of(value).orElseGet(s);
-        System.out.println(result);
-        Integer result2 = (Integer) Optional.empty().orElse(s);
+
 
     }
+
+    public static Integer oR (Optional<Integer> optional)
+    {
+
+    }
+
+
 }
 
