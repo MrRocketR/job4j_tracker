@@ -21,20 +21,11 @@ public class OptionalOrElseThrow {
     public static class UserNotFoundException extends RuntimeException { }
 
     public static User orElseThrow(List<User> list, String login) {
-        OptionalOrElseThrow.User user = null;
-        for (OptionalOrElseThrow.User u:list) {
-                if (u.getLogin().equals(login)) {
-                    user = u;
-                    break;
-                }
-        }
-       search(list, login);
-       return user;
+        // return search...;
     }
 
     private static Optional<User> search(List<User> list, String login) {
         Optional<User> user = Optional.empty();
-
         //
         return user;
     }
