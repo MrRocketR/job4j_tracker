@@ -1,7 +1,8 @@
-package ru.job4j.exesJob.lamd.lamdEx;
+package ru.job4j.exercises.lamda;
 
 import org.junit.Assert;
 import org.junit.Test;
+import ru.job4j.exercises.lamda.MethodReference;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;

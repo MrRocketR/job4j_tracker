@@ -1,8 +1,7 @@
-package ru.job4j.exesJob.lamd.lamdEx;
-
-import static org.junit.Assert.*;
+package ru.job4j.exercises.optional;
 
 import org.junit.Test;
+import ru.job4j.exercises.optional.OptionalOfNullable;
 
 import java.util.Arrays;
 import java.util.Optional;

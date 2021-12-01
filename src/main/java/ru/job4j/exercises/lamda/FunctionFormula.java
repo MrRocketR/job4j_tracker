@@ -1,11 +1,11 @@
-package ru.job4j.exesJob.lamd.lamdEx;
+package ru.job4j.exercises.lamda;
 
 import java.util.function.Function;
 
-public class FunctionSqrt {
+public class FunctionFormula {
 
     public static double calculate(double x) {
-        return calculate(a -> Math.sqrt(a), x);
+        return calculate(num -> num * num + 2 * num + 1, x);
     }
 
     public static double calculate(Function<Double, Double> y, double x) {

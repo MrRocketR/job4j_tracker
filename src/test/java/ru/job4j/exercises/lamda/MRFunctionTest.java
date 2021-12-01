@@ -1,6 +1,7 @@
-package ru.job4j.exesJob.lamd.lamdEx;
+package ru.job4j.exercises.lamda;
 
 import org.junit.Test;
+import ru.job4j.exercises.lamda.MRFunction;
 
 import java.util.function.Function;
 

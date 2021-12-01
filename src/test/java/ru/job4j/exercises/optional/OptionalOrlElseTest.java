@@ -1,6 +1,7 @@
-package ru.job4j.exesJob.lamd.lamdEx;
+package ru.job4j.exercises.optional;
 
 import org.junit.Test;
+import ru.job4j.exercises.optional.OptionalOrlElse;
 
 import java.util.Optional;
 

@@ -1,4 +1,4 @@
-package ru.job4j.exesJob.lamd.lamdEx;
+package ru.job4j.exercises.optional;
 
 import java.util.Optional;
 

@@ -1,11 +1,11 @@
-package ru.job4j.exesJob.lamd.lamdEx;
+package ru.job4j.exercises.optional;
 
 import java.util.function.Predicate;
 
-public class PredicateCheckEven {
+public class PredicateCheckEvenAndPositive {
 
     public static boolean check(int num) {
-        return check(n -> n % 2 == 0, num);
+        return check(n -> (n % 2 == 0 && n > 0), num);
     }
 
     private static boolean check(Predicate<Integer> predicate, int num) {
