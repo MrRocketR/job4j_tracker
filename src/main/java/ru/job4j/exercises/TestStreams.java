@@ -26,5 +26,7 @@ public class TestStreams {
                 .mapToInt(Double::intValue)
                 .mapToObj(i -> "a" + i)
                 .forEach(System.out::println);
+
+        List.of(1, 2, 3).stream().forEach(n -> System.out.println(n));
     }
 }
