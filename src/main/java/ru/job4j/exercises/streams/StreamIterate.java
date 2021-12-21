@@ -10,7 +10,6 @@ public class StreamIterate {
 
     public static void main(String[] args) {
         Stream.iterate(0, i -> i < 5, i -> i + 1).forEach(System.out::println);
-                //=> сгенерируются 0, 1, 2, 3, 4
         System.out.println("___________");
         int[] data = {1, 2, 3, 4};
         Stream.iterate(1, i -> i < data.length, i -> i + 2)
