@@ -7,8 +7,6 @@ import java.util.List;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-
-
 public class AnalyzeTest {
 
     @Test
@@ -19,7 +17,6 @@ public class AnalyzeTest {
                 .stream());
         assertThat(average, is(100D));
     }
-
 
     @Test
     public void whenPupilAverage() {

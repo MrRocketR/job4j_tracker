@@ -70,19 +70,17 @@ public class SchoolTest {
 
     @Test
     public void whenListToMap() {
-        Student s1 =  new Student(10, "Surname1");
-        Student s2 =  new Student(15, "Surname2");
-        Student s3 =  new Student(20, "Surname3");
+        Student s1 = new Student(10, "Surname1");
+        Student s2 = new Student(15, "Surname2");
+        Student s3 = new Student(20, "Surname3");
         List<Student> students = new ArrayList<>();
         students.add(s1);
         students.add(s2);
         students.add(s3);
-        Map<String,Student> expected = new HashMap<>();
-        expected.put(s1.getSurname(),s1);
-        expected.put(s2.getSurname(),s2);
-        expected.put(s3.getSurname(),s3);
+        Map<String, Student> expected = new HashMap<>();
+        expected.put(s1.getSurname(), s1);
+        expected.put(s2.getSurname(), s2);
+        expected.put(s3.getSurname(), s3);
         assertThat(School.listToMap(students), is(expected));
-
-
     }
 }

@@ -26,7 +26,7 @@ public class ProfilesTest {
     }
 
     @Test
-    public void whenIdenticalAdress(){
+    public void whenIdenticalAdress() {
         List<Profile> resProfiles = Arrays.asList(
                 new Profile(new Address("Moscow", "Testovya", 1, 2)),
                 new Profile(new Address("Kaluga", "Kaluga Testovaja", 2, 3)),

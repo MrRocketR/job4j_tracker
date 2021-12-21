@@ -11,7 +11,7 @@ public class MaxTest {
     public void whenMaxNine() {
         Max test = new Max();
         int exp = 9;
-        int out =  test.max(4, 2, 9, 7);
+        int out = test.max(4, 2, 9, 7);
         Assert.assertEquals(exp, out);
     }
 
@@ -35,7 +35,7 @@ public class MaxTest {
     public void whenAllEquals() {
         Max test = new Max();
         int expected = 2;
-        int result = test.max(2, 2,2,2);
+        int result = test.max(2, 2, 2, 2);
         Assert.assertEquals(2, result);
     }
 }

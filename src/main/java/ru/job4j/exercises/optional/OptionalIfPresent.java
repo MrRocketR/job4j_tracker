@@ -20,12 +20,14 @@ public class OptionalIfPresent {
             }
             out = Optional.of(max);
 
-        } else out = Optional.empty();
+        } else {
+            out = Optional.empty();
+        }
         return out;
     }
 
     public static void main(String[] args) {
-        int [] data1 = {1, 2, 3};
+        int[] data1 = {1, 2, 3};
         ifPresent(data1);
         }
 }

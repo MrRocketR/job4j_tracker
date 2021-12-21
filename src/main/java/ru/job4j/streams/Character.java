@@ -9,13 +9,13 @@ public class Character {
 
     @Override
     public String toString() {
-        return "Character{" +
-                "name='" + name + '\'' +
-                ", strength=" + strength +
-                ", intelligence=" + intelligence +
-                ", charisma=" + charisma +
-                ", alignment='" + alignment + '\'' +
-                '}';
+        return "Character{"
+                + "name='" + name + '\''
+                + ", strength=" + strength
+                + ", intelligence=" + intelligence
+                + ", charisma=" + charisma
+                +  ", alignment='" + alignment + '\''
+                +  '}';
     }
 
     static class Creator {

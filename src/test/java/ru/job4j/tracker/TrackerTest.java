@@ -19,6 +19,7 @@ public class TrackerTest {
         Item result = tracker.findById(item.getId());
         assertThat(result.getName(), is(item.getName()));
     }
+
     @Test
     public void whenTestFindById() {
         Tracker tracker = new Tracker();
@@ -63,9 +64,10 @@ public class TrackerTest {
         tracker.add(new Item("First"));
         tracker.add(new Item("Second"));
         tracker.add(new Item("First"));
-        List <Item> result  = tracker.findByName(second.getName());
+        List<Item> result  = tracker.findByName(second.getName());
         assertThat(result.get(1).getName(), is(second.getName()));
     }
+
     @Test
     public void whenReplace() {
         Tracker tracker = new Tracker();

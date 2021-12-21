@@ -47,8 +47,10 @@ public class FunctionInterfaceUsage {
         System.out.println("Третий символ в строке: " + func.apply("second"));
         System.out.println("____________________");
         UnaryOperator<StringBuilder> builder = b -> b.reverse();
-        System.out.println("Строка после реверса: " + builder.apply(new StringBuilder("String for test")));
-        System.out.println("Строка после реверса: " + builder.apply(new StringBuilder("tset rof gnirtS")));
+        System.out.println("Строка после реверса: " + builder
+                .apply(new StringBuilder("String for test")));
+        System.out.println("Строка после реверса: " + builder
+                .apply(new StringBuilder("tset rof gnirtS")));
         System.out.println("____________________");
         BinaryOperator<StringBuilder> builder2 = (b1, b2) -> b1.append(" ").append(b2);
         System.out.println(

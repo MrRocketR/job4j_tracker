@@ -17,6 +17,7 @@ public class TriangleTest {
         double rsl = triangle.area();
         assertThat(rsl, closeTo(8, 0.001));
     }
+
     @Test
     public void isNotExist() {
 
@@ -27,7 +28,7 @@ public class TriangleTest {
         double ac = a.distance(c);
         double bc = b.distance(c);
         Triangle triangle = new Triangle(a, b, c);
-        boolean rsl = triangle.exist(ab,ac,bc);
+        boolean rsl = triangle.exist(ab, ac, bc);
         Assert.assertFalse(rsl);
     }
 }

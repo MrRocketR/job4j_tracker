@@ -24,22 +24,22 @@ public class StartUITest {
         actions.add(new Exit(out));
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
-                "Menu:" + System.lineSeparator() +
-                        "0. Exit Program" + System.lineSeparator()
+                "Menu:" + System.lineSeparator()
+                        + "0. Exit Program" + System.lineSeparator()
         ));
     }
 
-     @Test
+    @Test
     public void whenDeleteItem() {
         Tracker tracker = new Tracker();
-         Output out = new StubOutput();
+        Output out = new StubOutput();
         Item item = tracker.add(new Item("Deleted item"));
         Input in = new StubInput(
-                new String[] {"0",  String.valueOf(item.getId()) , "1"}
+                new String[]{"0", String.valueOf(item.getId()), "1"}
         );
-         List<UserAction> actions = new ArrayList<>();
-         actions.add(new DeleteAction(out));
-         actions.add(new Exit(out));
+        List<UserAction> actions = new ArrayList<>();
+        actions.add(new DeleteAction(out));
+        actions.add(new Exit(out));
         new StartUI(out).init(in, tracker, actions);
         assertThat(tracker.findById(item.getId()), is(nullValue()));
     }
@@ -51,7 +51,7 @@ public class StartUITest {
         Item one = tracker.add(new Item("test1"));
         String replaceName = "New Test Name";
         Input in = new StubInput(
-                new String[] {"0", String.valueOf(one.getId()), replaceName, "1"}
+                new String[]{"0", String.valueOf(one.getId()), replaceName, "1"}
         );
         List<UserAction> actions = new ArrayList<>();
         actions.add(new ReplaceAction(out));
@@ -69,13 +69,14 @@ public class StartUITest {
                         + "1. Exit Program" + ln
         ));
     }
+
     @Test
-    public void whenFindAllActionTestOutputIsSuccessfully(){
+    public void whenFindAllActionTestOutputIsSuccessfully() {
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("test1"));
         Input in = new StubInput(
-                new String[] {"0","1"}
+                new String[]{"0", "1"}
         );
         List<UserAction> actions = new ArrayList<>();
         actions.add(new FindAllAction(out));
@@ -86,18 +87,19 @@ public class StartUITest {
                 "Menu:" + ln
                         + "0. Show all items" + ln
                         + "1. Exit Program" + ln
-                + one +  ln
-                + "Menu:" + ln +  "0. Show all items" + ln
+                        + one + ln
+                        + "Menu:" + ln + "0. Show all items" + ln
                         + "1. Exit Program" + ln
         ));
     }
+
     @Test
     public void whenFindByNameActionTestOutputIsSuccessfully() {
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("test1"));
         Input in = new StubInput(
-                new String[] {"0",String.valueOf(one.getName()),"1"}
+                new String[]{"0", String.valueOf(one.getName()), "1"}
         );
         List<UserAction> actions = new ArrayList<>();
         actions.add(new FindByNameAction(out));
@@ -110,7 +112,7 @@ public class StartUITest {
                         + "1. Exit Program" + ln
                         + "=== Find items by name ====" + ln
                         + one + ln
-                        + "Menu:" + ln +  "0. Find items by name" + ln
+                        + "Menu:" + ln + "0. Find items by name" + ln
                         + "1. Exit Program" + ln
         ));
     }
@@ -121,7 +123,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("test1"));
         Input in = new StubInput(
-                new String[] {"0",String.valueOf(one.getId()),"1"}
+                new String[]{"0", String.valueOf(one.getId()), "1"}
         );
         List<UserAction> actions = new ArrayList<>();
         actions.add(new FindByIdAction(out));
@@ -133,8 +135,8 @@ public class StartUITest {
                         + "0. Find item by id" + ln
                         + "1. Exit Program" + ln
                         + "=== Find item by id ====" + ln
-                        + one +  ln
-                        + "Menu:" + ln +  "0. Find item by id" + ln
+                        + one + ln
+                        + "Menu:" + ln + "0. Find item by id" + ln
                         + "1. Exit Program" + ln
         ));
 
@@ -144,7 +146,7 @@ public class StartUITest {
     public void whenInvalidExit() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"2","0"}
+                new String[]{"2", "0"}
         );
         Tracker tracker = new Tracker();
         List<UserAction> actions = new ArrayList<>();
