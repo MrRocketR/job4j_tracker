@@ -19,18 +19,30 @@ public class Calculator {
         return y / x;
     }
 
+    public static int sum(int y) {
+        return y + x;
+    }
+
+    public int multiply(int y) {
+        return y * x;
+    }
+
     public int sumAllOperation(int y) {
-        return minus(y) + divide(y);
+        return minus(y) + divide(y) + sum(y) + multiply(y);
 
     }
 
     public static void main(String[] args) {
         int m = Calculator.minus(10);
         System.out.println(m);
-        Calculator c = new Calculator();
-        int d = c.divide(10);
+        Calculator calculator = new Calculator();
+        int d = calculator.divide(10);
         System.out.println(d);
-        int s = c.sumAllOperation(10);
+        int mult = calculator.multiply(10);
+        System.out.println(mult);
+        int sum = Calculator.sum(10);
+        System.out.println(sum);
+        int s = calculator.sumAllOperation(10);
         System.out.println(s);
     }
 }
