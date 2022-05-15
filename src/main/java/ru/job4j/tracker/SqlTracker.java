@@ -2,12 +2,15 @@ package ru.job4j.tracker;
 
 import ru.job4j.tracker.model.Item;
 
+import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 public class SqlTracker implements Store, AutoCloseable {
 
@@ -16,7 +19,8 @@ public class SqlTracker implements Store, AutoCloseable {
     private Connection cn;
 
     public void init() {
-        try (InputStream in = SqlTracker.class.getClassLoader().getResourceAsStream("app.properties")) {
+        try (InputStream in = SqlTracker.class.getClassLoader()
+                .getResourceAsStream("app.properties")) {
             Properties config = new Properties();
             config.load(in);
             Class.forName(config.getProperty("driver-class-name"));
@@ -38,9 +42,19 @@ public class SqlTracker implements Store, AutoCloseable {
     }
 
     @Override
-    public Item add(Item item) {
-        item.setId(ids++);
-        items.add(item);
+    public Item add(Item item)  {
+        String strSQL = item.getName();
+        Timestamp timestampSQL = Timestamp.valueOf(item.getCurrentDateTime());
+        try (PreparedStatement pS = cn.prepareStatement(
+                "INSERT INTO tracker (name, created_date) "
+                        + "values (?,?)"
+        )) {
+            pS.setString(1, strSQL);
+            pS.setTimestamp(2, timestampSQL);
+            pS.execute();
+        } catch (SQLException SQLEx) {
+            SQLEx.printStackTrace();
+        }
         return item;
     }
 
@@ -57,23 +71,39 @@ public class SqlTracker implements Store, AutoCloseable {
 
     @Override
     public boolean replace(int id, Item item) {
-        int index = indexOf(id);
-        boolean result = index != -1;
-        if (result) {
-            item.setId(id);
-            items.set(index, item);
+        boolean result = false;
+        String strSQL = item.getName();
+        Timestamp timestampSQL = Timestamp.valueOf(item.getCurrentDateTime());
+        try (PreparedStatement pS = cn.prepareStatement(
+                "UPDATE tracker SET name = (?),  created_date = (?) "
+                        + "WHERE id = (?)"
+        )) {
+            pS.setString(1, strSQL);
+            pS.setTimestamp(2, timestampSQL);
+            pS.setInt(3, id);
+            pS.execute();
+            result = true;
+        } catch (SQLException SQLEx) {
+            SQLEx.printStackTrace();
         }
         return result;
     }
 
     @Override
     public boolean delete(int id) {
-        int index = indexOf(id);
-        boolean result = index != -1;
-        if (result) {
-            items.remove(index);
+        boolean result = false;
+        try (PreparedStatement pS = cn.prepareStatement(
+                "DELETE from tracker "
+                        + "where id = (?);"
+        )) {
+            pS.setInt(3, id);
+            pS.execute();
+            result = true;
+        } catch (SQLException SQLEx) {
+            SQLEx.printStackTrace();
         }
         return result;
+
     }
 
     @Override
@@ -96,5 +126,12 @@ public class SqlTracker implements Store, AutoCloseable {
     public Item findById(int id) {
         int index = indexOf(id);
         return index != -1 ? items.get(index) : null;
+    }
+
+    public static void main(String[] args) throws Exception {
+       SqlTracker sqlTracker = new SqlTracker();
+       sqlTracker.init();
+       sqlTracker.close();
+
     }
 }
