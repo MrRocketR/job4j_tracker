@@ -13,7 +13,6 @@ import java.sql.DriverManager;
 
 public class SqlTracker implements Store, AutoCloseable {
 
-
     private Connection cn;
     private int ids = 0;
 
@@ -81,8 +80,7 @@ public class SqlTracker implements Store, AutoCloseable {
                     result = true;
                 }
             }
-        }
-            catch (SQLException SQLEx) {
+        } catch (SQLException SQLEx) {
             SQLEx.printStackTrace();
         }
         return result;
@@ -116,7 +114,7 @@ public class SqlTracker implements Store, AutoCloseable {
         try (PreparedStatement statement = cn.prepareStatement(sql)) {
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
-                    items.add(new Item (
+                    items.add(new Item(
                             resultSet.getInt("id"),
                             resultSet.getString("name")
                     ));
@@ -127,7 +125,6 @@ public class SqlTracker implements Store, AutoCloseable {
         }
         return items;
     }
-
 
     @Override
     public List<Item> findByName(String key)  {
@@ -152,7 +149,7 @@ public class SqlTracker implements Store, AutoCloseable {
 
     @Override
     public Item findById(int id) {
-        Item returnedItem = new Item(0,null);
+        Item returnedItem = new Item(0,  null);
         String sql = "select * from tracker";
         try (PreparedStatement statement = cn.prepareStatement(sql)) {
             try (ResultSet resultSet = statement.executeQuery()) {
