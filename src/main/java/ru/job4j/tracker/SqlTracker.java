@@ -16,6 +16,13 @@ public class SqlTracker implements Store, AutoCloseable {
     private Connection cn;
     private int ids = 0;
 
+    public SqlTracker(Connection connection) {
+        this.cn = connection;
+    }
+
+    public SqlTracker() {
+    }
+
     public void init() {
         try (InputStream in = SqlTracker.class.getClassLoader()
                 .getResourceAsStream("app.properties")) {
@@ -170,7 +177,6 @@ public class SqlTracker implements Store, AutoCloseable {
        SqlTracker sqlTracker = new SqlTracker();
        sqlTracker.init();
        sqlTracker.close();
-
     }
 }
 
