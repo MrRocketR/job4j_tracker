@@ -16,9 +16,4 @@ public interface Store {
     List<Item> findByName(String key);
 
     Item findById(int id);
-
-    private int indexOf(int id) {
-        int rsl = -1;
-        return rsl;
-    }
 }
