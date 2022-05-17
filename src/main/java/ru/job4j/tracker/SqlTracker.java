@@ -71,8 +71,8 @@ public class SqlTracker implements Store, AutoCloseable {
         boolean result = false;
         String strSQL = item.getName();
         Timestamp timestampSQL = Timestamp.valueOf(item.getCurrentDateTime());
-        String sql = "UPDATE tracker SET name = (?),  created = (?), id = (?) "
-                + "WHERE id =" + id;
+        String sql = "UPDATE items SET name = (?),  created = (?), id = (?) "
+                + "WHERE id =  (?)";
         try (PreparedStatement pS = cn.prepareStatement(sql)) {
             pS.setString(1, strSQL);
             pS.setTimestamp(2, timestampSQL);
@@ -115,7 +115,7 @@ public class SqlTracker implements Store, AutoCloseable {
         return items;
     }
 
-        private List<Item> listFiller(ResultSet resultSet) throws SQLException {
+    private List<Item> listFiller(ResultSet resultSet) throws SQLException {
         List<Item> items = new ArrayList<>();
         while (resultSet.next()) {
             int id = resultSet.getInt("id");

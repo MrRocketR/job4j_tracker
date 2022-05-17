@@ -1,9 +1,6 @@
 package ru.job4j.tracker;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 import ru.job4j.tracker.model.Item;
 
 import java.io.InputStream;
@@ -58,6 +55,23 @@ public class SqlTrackerTest {
         Item item = new Item("item");
         tracker.add(item);
         assertThat(tracker.findById(item.getId()), is(item));
+    }
+
+    @Test
+    public void whenSaveItemAndDelete() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("item");
+        tracker.add(item);
+        Assert.assertTrue(tracker.delete(1));
+
+    }
+
+    @Test
+    public void whenSaveItemAndReplaced() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("item");
+        Item itemR = new Item("item2");
+        Assert.assertTrue(tracker.replace(item.getId(), itemR));
     }
 
 }
