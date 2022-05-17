@@ -75,4 +75,8 @@ public class Item implements Comparable<Item> {
     public int hashCode() {
         return Objects.hash(id, name, created);
     }
+
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
+    }
 }
