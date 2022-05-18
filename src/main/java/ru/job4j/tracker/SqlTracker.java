@@ -114,7 +114,6 @@ public class SqlTracker implements Store, AutoCloseable {
         return items;
     }
 
-
     @Override
     public List<Item> findByName(String key)  {
         List<Item> items = new ArrayList<>();
