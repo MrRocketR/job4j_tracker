@@ -1,5 +1,6 @@
 package ru.job4j.tracker;
 
+
 import org.junit.Test;
 import ru.job4j.tracker.model.Item;
 
@@ -8,7 +9,6 @@ import java.util.List;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.core.IsNull.nullValue;
-
 public class MemTrackerTest {
     @Test
     public void whenAddNewItemThenTrackerHasSameItem() {
@@ -92,3 +92,4 @@ public class MemTrackerTest {
         assertThat(memTracker.findById(id), is(nullValue()));
     }
 }
+

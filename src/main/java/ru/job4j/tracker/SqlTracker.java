@@ -78,8 +78,7 @@ public class SqlTracker implements Store, AutoCloseable {
             pS.setTimestamp(2, timestampSQL);
             pS.setInt(3, item.getId());
             pS.setInt(4, id);
-            pS.execute();
-            result = true;
+            result = pS.executeUpdate() > 0;
         } catch (SQLException SQLEx) {
             SQLEx.printStackTrace();
         }
@@ -93,8 +92,7 @@ public class SqlTracker implements Store, AutoCloseable {
                 + "where id = (?)";
         try (PreparedStatement pS = cn.prepareStatement(sql)) {
             pS.setInt(1, id);
-            pS.execute();
-            result = true;
+            result = pS.executeUpdate() > 0;
         } catch (SQLException SQLEx) {
             SQLEx.printStackTrace();
         }
@@ -145,19 +143,13 @@ public class SqlTracker implements Store, AutoCloseable {
 
     @Override
     public Item findById(int id) {
-        Item newItem = new Item(0, null);
+        Item newItem = null;
         String sql = "select * from items where id = (?)";
         try (PreparedStatement statement = cn.prepareStatement(sql)) {
             statement.setInt(1, id);
             try (ResultSet resultSet = statement.executeQuery()) {
-                while (resultSet.next()) {
-                    int itemId = resultSet.getInt("id");
-                    String name = resultSet.getString("name");
-                    LocalDateTime dateTime = resultSet.getTimestamp("created")
-                            .toLocalDateTime();
-                    newItem.setId(itemId);
-                    newItem.setName(name);
-                    newItem.setCreated(dateTime);
+                if (resultSet.next()) {
+                    newItem = getFromDB(resultSet);
                 }
             }
         } catch (Exception e) {
@@ -166,9 +158,17 @@ public class SqlTracker implements Store, AutoCloseable {
         return newItem;
     }
 
+    private Item getFromDB(ResultSet set) throws SQLException {
+        return new Item(
+                set.getInt("id"),
+                set.getString("name"),
+                set.getTimestamp("created").toLocalDateTime()
+        );
+    }
+
     public static void main(String[] args) throws Exception {
        SqlTracker sqlTracker = new SqlTracker();
        sqlTracker.init();
+       sqlTracker.close();
     }
 }
-

@@ -57,6 +57,7 @@ public class SqlTrackerTest {
         assertThat(tracker.findById(item.getId()), is(item));
     }
 
+    @Ignore
     @Test
     public void whenSaveItemAndDelete() {
         SqlTracker tracker = new SqlTracker(connection);
@@ -66,6 +67,7 @@ public class SqlTrackerTest {
 
     }
 
+    @Ignore
     @Test
     public void whenSaveItemAndReplaced() {
         SqlTracker tracker = new SqlTracker(connection);
