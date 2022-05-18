@@ -104,7 +104,9 @@ public class SqlTracker implements Store, AutoCloseable {
         String sql = "select * from items";
         try (PreparedStatement statement = cn.prepareStatement(sql)) {
             try (ResultSet resultSet = statement.executeQuery()) {
-                items = listFiller(resultSet);
+                while (resultSet.next()) {
+                    items.add(getFromDB(resultSet));
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -112,18 +114,6 @@ public class SqlTracker implements Store, AutoCloseable {
         return items;
     }
 
-    private List<Item> listFiller(ResultSet resultSet) throws SQLException {
-        List<Item> items = new ArrayList<>();
-        while (resultSet.next()) {
-            int id = resultSet.getInt("id");
-            String name = resultSet.getString("name");
-            LocalDateTime dateTime = resultSet.getTimestamp("created").toLocalDateTime();
-            Item newItem = new Item(id, name);
-            newItem.setCreated(dateTime);
-            items.add(newItem);
-        }
-        return items;
-    }
 
     @Override
     public List<Item> findByName(String key)  {
@@ -132,8 +122,9 @@ public class SqlTracker implements Store, AutoCloseable {
         try (PreparedStatement statement = cn.prepareStatement(sql)) {
             statement.setString(1, key);
             try (ResultSet resultSet = statement.executeQuery()) {
-
-                items = listFiller(resultSet);
+                while (resultSet.next()) {
+                    items.add(getFromDB(resultSet));
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -172,3 +163,4 @@ public class SqlTracker implements Store, AutoCloseable {
        sqlTracker.close();
     }
 }
+
