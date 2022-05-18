@@ -71,13 +71,12 @@ public class SqlTracker implements Store, AutoCloseable {
         boolean result = false;
         String strSQL = item.getName();
         Timestamp timestampSQL = Timestamp.valueOf(item.getCurrentDateTime());
-        String sql = "UPDATE items SET name = (?),  created = (?), id = (?) "
+        String sql = "UPDATE items SET name = (?),  created = (?) "
                 + "WHERE id =  (?)";
         try (PreparedStatement pS = cn.prepareStatement(sql)) {
             pS.setString(1, strSQL);
             pS.setTimestamp(2, timestampSQL);
-            pS.setInt(3, item.getId());
-            pS.setInt(4, id);
+            pS.setInt(3, id);
             result = pS.executeUpdate() > 0;
         } catch (SQLException SQLEx) {
             SQLEx.printStackTrace();
@@ -133,6 +132,7 @@ public class SqlTracker implements Store, AutoCloseable {
         try (PreparedStatement statement = cn.prepareStatement(sql)) {
             statement.setString(1, key);
             try (ResultSet resultSet = statement.executeQuery()) {
+
                 items = listFiller(resultSet);
             }
         } catch (SQLException e) {
