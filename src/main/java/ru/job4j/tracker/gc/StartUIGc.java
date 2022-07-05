@@ -37,12 +37,8 @@ public class StartUIGc {
         Input input = new ValidateInput(output, new ConsoleInput());
         MemTracker tracker = new MemTracker();
             List<UserAction> actions = List.of(
-                    new CreateAction(output),
-                    new ReplaceAction(output),
-                    new DeleteAction(output),
-                    new FindAllAction(output),
-                    new FindByIdAction(output),
-                    new FindByNameAction(output),
+                    new CreateActionGC(output),
+                    new DeleteActionGC(output),
                     new Exit(output)
             );
             new StartUIGc(output).init(input, tracker, actions);
