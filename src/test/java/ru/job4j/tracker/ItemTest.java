@@ -11,7 +11,6 @@ import java.util.List;
 
 public class ItemTest {
 
-
     @Test
     public void sortUpById() {
         List<Item> items = Arrays.asList(
