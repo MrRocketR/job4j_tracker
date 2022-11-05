@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ValidateInputTest {
 
@@ -16,7 +17,7 @@ public class ValidateInputTest {
         );
         ValidateInput input = new ValidateInput(out, in);
         int selected = input.askInt("Enter menu:");
-        assertThat(selected, is(1));
+        assertEquals(selected, 1);
     }
 
     @Test
@@ -27,11 +28,11 @@ public class ValidateInputTest {
         );
         ValidateInput input = new ValidateInput(out, in);
         int selected = input.askInt("Enter menu:");
-        assertThat(selected, is(1));
+        assertEquals(selected, 1);
         selected = input.askInt("Enter menu:");
-        assertThat(selected, is(2));
+        assertEquals(selected, 2);
         selected = input.askInt("Enter menu:");
-        assertThat(selected, is(3));
+        assertEquals(selected, 3);
     }
 
     @Test
@@ -42,7 +43,7 @@ public class ValidateInputTest {
         );
         ValidateInput input = new ValidateInput(out, in);
         int selected = input.askInt("Enter menu:");
-        assertThat(selected, is(-1));
+        assertEquals(selected, -1);
     }
 
 }

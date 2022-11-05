@@ -1,7 +1,6 @@
 package ru.job4j.tracker;
 
 import org.junit.*;
-import ru.job4j.tracker.SqlTracker;
 import ru.job4j.tracker.model.Item;
 
 import java.io.InputStream;
@@ -13,7 +12,6 @@ import java.util.List;
 import java.util.Properties;
 
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 public class SqlTrackerTest {

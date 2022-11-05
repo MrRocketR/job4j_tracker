@@ -9,6 +9,8 @@ import java.util.List;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class StartUITest {
 
@@ -22,10 +24,10 @@ public class StartUITest {
         List<UserAction> actions = new ArrayList<>();
         actions.add(new Exit(out));
         new StartUI(out).init(in, memTracker, actions);
-        assertThat(out.toString(), is(
+        assertEquals(out.toString(),
                 "Menu:" + System.lineSeparator()
                         + "0. Exit Program" + System.lineSeparator()
-        ));
+        );
     }
 
     @Test
@@ -40,7 +42,7 @@ public class StartUITest {
         actions.add(new DeleteAction(out));
         actions.add(new Exit(out));
         new StartUI(out).init(in, memTracker, actions);
-        assertThat(memTracker.findById(item.getId()), is(nullValue()));
+        assertNull(memTracker.findById(item.getId()));
     }
 
     @Test
@@ -57,7 +59,7 @@ public class StartUITest {
         actions.add(new Exit(out));
         new StartUI(out).init(in, memTracker, actions);
         String ln = System.lineSeparator();
-        assertThat(out.toString(), is(
+        assertEquals(out.toString(),
                 "Menu:" + ln
                         + "0. Edit item" + ln
                         + "1. Exit Program" + ln
@@ -66,7 +68,7 @@ public class StartUITest {
                         + "Menu:" + ln
                         + "0. Edit item" + ln
                         + "1. Exit Program" + ln
-        ));
+        );
     }
 
     @Test
@@ -82,14 +84,14 @@ public class StartUITest {
         actions.add(new Exit(out));
         new StartUI(out).init(in, memTracker, actions);
         String ln = System.lineSeparator();
-        assertThat(out.toString(), is(
+        assertEquals(out.toString(),
                 "Menu:" + ln
                         + "0. Show all items" + ln
                         + "1. Exit Program" + ln
                         + one + ln
                         + "Menu:" + ln + "0. Show all items" + ln
                         + "1. Exit Program" + ln
-        ));
+        );
     }
 
     @Test
@@ -105,7 +107,7 @@ public class StartUITest {
         actions.add(new Exit(out));
         new StartUI(out).init(in, memTracker, actions);
         String ln = System.lineSeparator();
-        assertThat(out.toString(), is(
+        assertEquals(out.toString(),
                 "Menu:" + ln
                         + "0. Find items by name" + ln
                         + "1. Exit Program" + ln
@@ -113,7 +115,7 @@ public class StartUITest {
                         + one + ln
                         + "Menu:" + ln + "0. Find items by name" + ln
                         + "1. Exit Program" + ln
-        ));
+        );
     }
 
     @Test
@@ -129,7 +131,7 @@ public class StartUITest {
         actions.add(new Exit(out));
         new StartUI(out).init(in, memTracker, actions);
         String ln = System.lineSeparator();
-        assertThat(out.toString(), is(
+        assertEquals(out.toString(),
                 "Menu:" + ln
                         + "0. Find item by id" + ln
                         + "1. Exit Program" + ln
@@ -137,7 +139,7 @@ public class StartUITest {
                         + one + ln
                         + "Menu:" + ln + "0. Find item by id" + ln
                         + "1. Exit Program" + ln
-        ));
+        );
 
     }
 
@@ -152,14 +154,13 @@ public class StartUITest {
         actions.add(new Exit(out));
         new StartUI(out).init(in, memTracker, actions);
         String ln = System.lineSeparator();
-        assertThat(out.toString(), is(
+        assertEquals(out.toString(),
                 "Menu:" + ln
                         + "0. Exit Program" + ln
                         + "Wrong input, you can select: 0 .. 0" + ln
                         + "Menu:" + ln
                         + "0. Exit Program" + ln
-                )
-        );
+                );
     }
 
 }
