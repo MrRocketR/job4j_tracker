@@ -49,7 +49,7 @@ public class SqlTracker implements Store, AutoCloseable {
     @Override
     public Item add(Item item)  {
         String strSQL = item.getName();
-        Timestamp timestampSQL = Timestamp.valueOf(item.getCurrentDateTime());
+        Timestamp timestampSQL = Timestamp.valueOf(item.getCreated());
         String sql = "INSERT INTO items (name, created) "
                 + "values (?,?)";
         try (PreparedStatement pS = cn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -70,7 +70,7 @@ public class SqlTracker implements Store, AutoCloseable {
     public boolean replace(int id, Item item) {
         boolean result = false;
         String strSQL = item.getName();
-        Timestamp timestampSQL = Timestamp.valueOf(item.getCurrentDateTime());
+        Timestamp timestampSQL = Timestamp.valueOf(item.getCreated());
         String sql = "UPDATE items SET name = (?),  created = (?) "
                 + "WHERE id =  (?)";
         try (PreparedStatement pS = cn.prepareStatement(sql)) {
