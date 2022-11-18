@@ -43,7 +43,7 @@ public class SqlTrackerTest {
 
     @After
     public void wipeTable() throws SQLException {
-        try (PreparedStatement statement = connection.prepareStatement("delete from items")) {
+        try (PreparedStatement statement = connection.prepareStatement("truncate table items")) {
             statement.execute();
         }
     }

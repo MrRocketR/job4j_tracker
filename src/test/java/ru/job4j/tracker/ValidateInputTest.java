@@ -1,10 +1,7 @@
 package ru.job4j.tracker;
 
-import org.hamcrest.core.Is;
-import org.junit.Test;
 
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ValidateInputTest {

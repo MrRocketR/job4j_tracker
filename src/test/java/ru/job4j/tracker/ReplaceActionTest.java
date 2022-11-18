@@ -1,7 +1,7 @@
 package ru.job4j.tracker;
 
 
-import org.assertj.core.api.Assertions;
+
 import org.junit.Test;
 import ru.job4j.tracker.model.Item;
 
@@ -10,9 +10,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-
-import static org.assertj.core.api.Assertions.assertThat;
-
 public class ReplaceActionTest {
 
     @Test
