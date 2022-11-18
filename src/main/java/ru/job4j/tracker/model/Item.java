@@ -2,25 +2,21 @@ package ru.job4j.tracker.model;
 
 import lombok.*;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Objects;
 
-@ToString
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Entity
+@Table(name = "items")
+@Data
 public class Item implements Comparable<Item> {
     private static final DateTimeFormatter FORMATTER
             = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
-    @Getter
-    @Setter
-    @EqualsAndHashCode.Include
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Getter
-    @Setter
-    @EqualsAndHashCode.Include
     private  String name;
-    @Getter
-    @Setter
     private LocalDateTime created = LocalDateTime.now();
 
     public Item() {
