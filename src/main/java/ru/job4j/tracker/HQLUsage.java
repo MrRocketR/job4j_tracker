@@ -27,7 +27,6 @@ public class HQLUsage {
         System.out.println(query.uniqueResult());
     }
 
-
     public static void findById(Session session, int id) {
         Query<Item> query = session.createQuery(
                 "from Item as i where i.id = :fId", Item.class);
