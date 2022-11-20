@@ -109,6 +109,7 @@ public class HbmTracker implements Store, AutoCloseable {
         Session session = sf.openSession();
         Query<Item> query = session.createQuery(
                 FIND_BY_ID, Item.class);
+        query.setParameter("fId", id);
         return query.uniqueResult();
     }
 
