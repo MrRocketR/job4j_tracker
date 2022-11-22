@@ -11,7 +11,7 @@ import java.time.format.DateTimeFormatter;
 @Table(name = "items")
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Item implements Comparable<Item> , Serializable {
+public class Item implements Comparable<Item>, Serializable {
     private static final DateTimeFormatter FORMATTER
             = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
 
