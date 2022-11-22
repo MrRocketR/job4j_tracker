@@ -855,7 +855,7 @@ D:\projects\job4j_tracker>jmap -histo 1440
  848:             1             24  jdk.jfr.internal.SecuritySupport$SecureRecorderListener (jdk.jfr@16.0.2)
  849:             1             24  jdk.jfr.internal.management.StreamManager (jdk.jfr@16.0.2)
  850:             1             24  jdk.management.jfr.internal.FlightRecorderMXBeanProvider$SingleMBeanComponent (jdk.management.jfr@16.0.2)
- 851:             1             24  ru.job4j.tracker.MemTracker
+ 851:             1             24  ru.job4j.tracker.trackers.MemTracker
  852:             1             24  ru.job4j.tracker.ValidateInput
  853:             1             24  sun.instrument.TransformerManager (java.instrument@16.0.2)
  854:             1             24  sun.management.CompilationImpl (java.management@16.0.2)
