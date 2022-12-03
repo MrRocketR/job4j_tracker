@@ -1,11 +1,13 @@
 package ru.job4j.tracker.model;
 
 import lombok.*;
+import ru.job4j.toone.User;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @Entity
 @Table(name = "items")
@@ -18,12 +20,9 @@ public class Item implements Comparable<Item>, Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
-    @Column(name = "id")
     private int id;
-    @Column(name = "name")
     private String name;
 
-    @Column(name = "created")
     private LocalDateTime created = LocalDateTime.now();
 
     public Item() {
@@ -44,6 +43,13 @@ public class Item implements Comparable<Item>, Serializable {
         this.created = created;
     }
 
+    @ManyToMany
+    @JoinTable(
+            name = "participates",
+            joinColumns = { @JoinColumn(name = "item_id") },
+            inverseJoinColumns = { @JoinColumn(name = "user_id") }
+    )
+    private List<User> participates;
     @Override
     public int compareTo(Item another) {
         return Integer.compare(id, another.id);
