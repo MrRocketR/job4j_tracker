@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -46,10 +47,11 @@ public class Item implements Comparable<Item>, Serializable {
     @ManyToMany
     @JoinTable(
             name = "participates",
-            joinColumns = { @JoinColumn(name = "item_id") },
-            inverseJoinColumns = { @JoinColumn(name = "user_id") }
+            joinColumns = {@JoinColumn(name = "item_id")},
+            inverseJoinColumns = {@JoinColumn(name = "user_id")}
     )
-    private List<User> participates;
+    private List<User> participates = new ArrayList<>();
+
     @Override
     public int compareTo(Item another) {
         return Integer.compare(id, another.id);
