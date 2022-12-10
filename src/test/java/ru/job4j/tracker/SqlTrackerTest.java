@@ -19,7 +19,7 @@ public class SqlTrackerTest {
 
     private static Connection connection;
 
-    @BeforeClass
+
     public static void initConnection() {
         try (InputStream in = SqlTrackerTest.class.getClassLoader().
                 getResourceAsStream("test.properties")) {
@@ -37,19 +37,19 @@ public class SqlTrackerTest {
         }
     }
 
-    @AfterClass
+
     public static void closeConnection() throws SQLException {
         connection.close();
     }
 
-    @After
+
     public void wipeTable() throws SQLException {
         try (PreparedStatement statement = connection.prepareStatement("truncate table items")) {
             statement.execute();
         }
     }
 
-    @Test
+
     public void whenSaveItemAndFindByGeneratedIdThenMustBeTheSame() {
         SqlTracker tracker = new SqlTracker(connection);
         Item item = new Item("item");
@@ -57,7 +57,7 @@ public class SqlTrackerTest {
         assertThat(tracker.findById(item.getId()), is(item));
     }
 
-    @Test
+
     public void whenSaveItemAndDelete() {
         SqlTracker tracker = new SqlTracker(connection);
         Item item = tracker.add(new Item("item1"));
@@ -65,7 +65,7 @@ public class SqlTrackerTest {
 
     }
 
-    @Test
+
     public void whenSaveItemAndReplaced() {
         SqlTracker tracker = new SqlTracker(connection);
         Item item = tracker.add(new Item("item1"));
@@ -75,7 +75,7 @@ public class SqlTrackerTest {
         Assert.assertEquals(tracker.findById(id).getName(), itemR.getName());
     }
 
-    @Test
+
     public void whenSaveItemAndReplacedAndSameName() {
         SqlTracker tracker = new SqlTracker(connection);
         Item item = tracker.add(new Item("item1"));
@@ -85,7 +85,7 @@ public class SqlTrackerTest {
         Assert.assertEquals(tracker.findById(id).getName(), itemR.getName());
     }
 
-    @Test
+
     public void whenAddAndFindByName() {
         SqlTracker tracker = new SqlTracker(connection);
         Item item1 = tracker.add(new Item("item"));
@@ -94,7 +94,7 @@ public class SqlTrackerTest {
         assertThat(tracker.findByName("item"), is(List.of(item1)));
     }
 
-    @Test
+
     public void whenAddAndFindById() {
         SqlTracker tracker = new SqlTracker(connection);
         Item item1 = tracker.add(new Item("item"));
@@ -102,7 +102,7 @@ public class SqlTrackerTest {
         Assert.assertEquals((tracker.findById(item1.getId())), item1);
     }
 
-    @Test
+
     public void whenAddAndFindAll() {
         SqlTracker tracker = new SqlTracker(connection);
         Item item1 = tracker.add(new Item("item1"));
@@ -111,7 +111,7 @@ public class SqlTrackerTest {
         assertThat(tracker.findAll(), is(List.of(item1, item2, item3)));
     }
 
-    @Test
+
     public void whenAddAndDeleteNull() {
         SqlTracker tracker = new SqlTracker(connection);
         Item item1 = tracker.add(new Item("item"));
