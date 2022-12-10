@@ -15,16 +15,21 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Item implements Comparable<Item>, Serializable {
-    private static final DateTimeFormatter FORMATTER
-            = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private int id;
     private String name;
-
     private LocalDateTime created = LocalDateTime.now();
+
+    @ManyToMany
+    @JoinTable(
+            name = "participates",
+            joinColumns = {@JoinColumn(name = "item_id")},
+            inverseJoinColumns = {@JoinColumn(name = "user_id")}
+    )
+    private List<User> participates = new ArrayList<>();
 
     public Item() {
     }
@@ -43,14 +48,6 @@ public class Item implements Comparable<Item>, Serializable {
         this.name = name;
         this.created = created;
     }
-
-    @ManyToMany
-    @JoinTable(
-            name = "participates",
-            joinColumns = {@JoinColumn(name = "item_id")},
-            inverseJoinColumns = {@JoinColumn(name = "user_id")}
-    )
-    private List<User> participates = new ArrayList<>();
 
     @Override
     public int compareTo(Item another) {
