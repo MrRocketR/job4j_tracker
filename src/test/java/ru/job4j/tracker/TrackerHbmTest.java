@@ -2,8 +2,12 @@ package ru.job4j.tracker;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.junit.After;
 import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import ru.job4j.tracker.model.Item;
 import ru.job4j.tracker.trackers.HbmTracker;
@@ -14,18 +18,16 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 public class TrackerHbmTest {
-    private final HbmTracker tracker = new HbmTracker();
-    private SessionFactory sf = tracker.getSf();
 
-    @After
+    private static final StandardServiceRegistry REGISTRY = new StandardServiceRegistryBuilder()
+            .configure().build();
+    private final SessionFactory sf = new MetadataSources(REGISTRY)
+            .buildMetadata().buildSessionFactory();
+    private final HbmTracker tracker = new HbmTracker();
+
+    @AfterEach
     public void wipeTable() {
-        try (Session session = sf.openSession()) {
-            session.beginTransaction();
-            session.createSQLQuery("DELETE FROM items").executeUpdate();
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        tracker.wipeTable();
     }
 
     @Test
@@ -47,9 +49,10 @@ public class TrackerHbmTest {
 
     @Test
     public void whenSaveThenDeleteThenNullById() {
-        Item item = tracker.add(new Item("test"));
-        tracker.delete(item.getId());
-        Assertions.assertNull(tracker.findById(item.getId()));
+        Item item = new Item("deleted");
+        tracker.add(item);
+        boolean result = tracker.delete(item.getId());
+        Assertions.assertTrue(result);
     }
 
     @Test
