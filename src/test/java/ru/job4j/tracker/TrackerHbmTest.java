@@ -31,24 +31,26 @@ public class TrackerHbmTest {
     }
 
     @Test
-    public void whenAddNewItemThenTrackerHasSameItem() {
+    public void whenAddNewItemThenTrackerHasSameItem() throws Exception {
         Item item = new Item("test1");
         tracker.add(item);
         Item rsl = tracker.findById(item.getId());
+        tracker.close();
         Assertions.assertEquals(rsl.getName(), item.getName());
     }
 
     @Test
-    public void whenSaveItemAndThenReplaceThenIdMustBeTheSame() {
+    public void whenSaveItemAndThenReplaceThenIdMustBeTheSame() throws Exception {
         Item item1 = tracker.add(new Item("test1"));
         Item item2 = new Item("test2");
         int expectedId = item1.getId();
         tracker.replace(expectedId, item2);
         Assertions.assertEquals(tracker.findById(expectedId).getName(), item2.getName());
+        tracker.close();
     }
 
     @Test
-    public void whenSaveThenDeleteThenNullById() {
+    public void whenSaveThenDeleteThenNullById() throws Exception {
         Item item = new Item("deleted");
         tracker.add(item);
         boolean result = tracker.delete(item.getId());
@@ -56,10 +58,11 @@ public class TrackerHbmTest {
     }
 
     @Test
-    public void whenSaveListAndFindAllThenGetSameList() {
+    public void whenSaveListAndFindAllThenGetSameList() throws Exception {
         Item item1 = tracker.add(new Item("item1"));
         Item item2 = tracker.add(new Item("item2"));
         Item item3 = tracker.add(new Item("item3"));
         Assertions.assertEquals(tracker.findAll(), List.of(item1, item2, item3));
+        tracker.close();
     }
 }
